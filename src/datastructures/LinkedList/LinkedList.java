@@ -57,7 +57,7 @@ public class LinkedList {
 
     }
     /**
-     * Deletes from the LinkedList it's last Node.
+     * Removes the last node from the LinkedList.
      * @return null if the list is empty or the deleted node
      */
     public Node removeLast(){
@@ -111,7 +111,7 @@ public class LinkedList {
 
     }
     /**
-     * Deletes from the LinkedList it's first Node.
+     * Removes the first element of the LinkedList.
      * @return null if the list is empty or the deleted node
      */
     public Node removeFirst(){
@@ -181,6 +181,14 @@ public class LinkedList {
         return false;
     }
 
+    /**
+     * Inserts a node at the given index.
+     * If the list it's empty, it will perform a prepend()
+     * If the index is the last element, it will perform an append()
+     * @param index where to place the node
+     * @param value the node's value
+     * @return true for valid inserts, false for no insertions
+     */
     public boolean insert(int index, int value){
         /*
         * O(n) because we make use of get to loop through the list
@@ -192,7 +200,7 @@ public class LinkedList {
         // -1 makes it target the node before that
         Node temp = get(index - 1);
 
-        // if the place(index) we are trying to insert doesnt exist
+        // if the place(index) we are trying to insert doesn't exist
         if (index < 0 || index > length) return false;
         // if the place(index) we are trying to insert is at position 1 / beginning
         if(index == 0){
@@ -214,6 +222,29 @@ public class LinkedList {
 
 
 
+    }
+
+    /**
+     * Deletes the node from the LinkedList at the given index.
+     * If the index is the first element, it calls removeFirst().
+     * If the index is the last element, it calls removeLast().
+     * @param index the position of the element to be removed
+     * @return returns the deleted Node or null for out of bounds
+     */
+    public Node remove(int index){
+        if(index < 0 || index >= length ) return null;
+        if(index == 0) return removeFirst();
+        if(index == length - 1) return removeLast();
+
+        Node previous = get(index - 1);
+        // we don't do get(index) for temp because it's O(n)
+        // previous.next is O(1), its faster
+        Node temp = previous.next;
+
+        previous.next = temp.next;
+        temp.next = null;
+        length --;
+        return temp;
     }
 }
 
