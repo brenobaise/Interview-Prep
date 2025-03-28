@@ -141,6 +141,7 @@ public class LinkedList {
      * null if the index is < 0 or >= the size of the array
      */
     public Node get(int index){
+        // O(n) because it has to loop to find the node
         Node temp = head;
         if(index < 0 || index >= length){
             return null;
@@ -162,4 +163,57 @@ public class LinkedList {
         }
         */
     }
+
+    /**
+     * Set uses get to find the target node, then it changes its current value.
+     * @param index the position of the target node
+     * @param value the new value to be given
+     * @return true if it changes the value, false if there is no node at that index
+     * or if the data structure is empty.
+     */
+    public boolean set(int index, int value){
+        // O(n) because it uses get
+        Node temp = get(index);
+        if(temp != null){
+            temp.value = value;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean insert(int index, int value){
+        /*
+        * O(n) because we make use of get to loop through the list
+        * to find the index we want.
+        * */
+
+        Node newNode = new Node(value);
+        // get returns the node at the given index
+        // -1 makes it target the node before that
+        Node temp = get(index - 1);
+
+        // if the place(index) we are trying to insert doesnt exist
+        if (index < 0 || index > length) return false;
+        // if the place(index) we are trying to insert is at position 1 / beginning
+        if(index == 0){
+            prepend(value);
+            return true;
+        }
+        // if the place(index) we are trying to insert is at the end
+        if(index == length){
+            append(value);
+            return true;
+        }
+        // set the new node predecessor to be the current node's predecessor
+        // by current I mean the index we are looking at
+        newNode.next = temp.next;
+        // set the ancestor of the new node, to be the current node
+        temp.next = newNode;
+        length ++;
+        return true;
+
+
+
+    }
 }
+
