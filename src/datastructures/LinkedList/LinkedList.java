@@ -38,6 +38,7 @@ public class LinkedList {
     and change the tail to the new node.
      */
     public void append(int value){
+//        O(1) because it only takes one operation
         Node newNode = new Node(value);
 
         if(length == 0){
@@ -51,6 +52,8 @@ public class LinkedList {
 
     }
     public Node removeLast(){
+        // O(n) n being the size of the array,
+        // this is because we have to loop the array before we can perform a task
         if(length == 0) return null;
         Node temp = head;
         Node previous = head;
@@ -71,6 +74,45 @@ public class LinkedList {
             head = null;
             tail = null;
 
+        }
+        return temp;
+
+    }
+    public void prepend(int value){
+        /*
+        * O(1) because this is only 1 operation, no need to loop
+        * Create a new node, this new node's next should be what head currently points at
+        * then move head to point to the new node, therefore there is no lost connection on the link
+        * */
+        Node newNode = new Node(value);
+        if(length == 0 || head == null){
+            head = newNode;
+            tail = newNode;
+        } else{
+            newNode.next = head;
+            head = newNode;
+        }
+        length ++;
+
+
+
+    }
+    public Node removeFirst(){
+        /*
+        * O(1) due to no looping, only a single task
+        * Temp is the node we are going to delete, so we set it to be head
+        * We change head to head.next because we need to perform a right shift onto the new head
+        * temp.next cuts the connection onto our list, isolating the node
+        * */
+        if(length == 0) return null;
+        Node temp = head;
+        head = head.next;
+        temp.next = null;
+        length --;
+
+        // edge case where the list is already empty
+        if(length == 0){
+            tail = null;
         }
         return temp;
 

@@ -5,9 +5,9 @@ public class Main {
         LinkedList ll = new LinkedList(1);
 
         ll.append(2);
+        ll.append(3);
+        ll.prepend(0);
+        ll.printList();
 
-        System.out.println(ll.removeLast().value);
-        System.out.println(ll.removeLast().value);
-        System.out.println(ll.removeLast());
     }
 }
