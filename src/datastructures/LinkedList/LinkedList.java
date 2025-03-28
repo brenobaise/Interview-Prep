@@ -30,15 +30,20 @@ public class LinkedList {
         System.out.println("Length: " + length);
     }
 
-    /*
-    To append a new item to the end of the list:
-    Check if the list is empty
-    If it is, set head and tail to the new node
-    If its not, set the tail next node to be the new node
-    and change the tail to the new node.
+
+    /**
+     * Adds a Node to the end of the list.
+     * if the list is empty, this new node will be it's head and tail.
      */
     public void append(int value){
-//        O(1) because it only takes one operation
+    /*
+        O(1) because it only takes one operation
+        To append a new item to the end of the list:
+        Check if the list is empty
+        If it is, set head and tail to the new node
+        If its not, set the tail next node to be the new node
+        and change the tail to the new node.
+     */
         Node newNode = new Node(value);
 
         if(length == 0){
@@ -51,6 +56,10 @@ public class LinkedList {
         length ++;
 
     }
+    /**
+     * Deletes from the LinkedList it's last Node.
+     * @return null if the list is empty or the deleted node
+     */
     public Node removeLast(){
         // O(n) n being the size of the array,
         // this is because we have to loop the array before we can perform a task
@@ -78,6 +87,10 @@ public class LinkedList {
         return temp;
 
     }
+    /**
+     * Adds a node at the beginning of the list with the given value
+     * @param value The value contained inside the Node
+     */
     public void prepend(int value){
         /*
         * O(1) because this is only 1 operation, no need to loop
@@ -97,6 +110,10 @@ public class LinkedList {
 
 
     }
+    /**
+     * Deletes from the LinkedList it's first Node.
+     * @return null if the list is empty or the deleted node
+     */
     public Node removeFirst(){
         /*
         * O(1) due to no looping, only a single task
@@ -116,5 +133,33 @@ public class LinkedList {
         }
         return temp;
 
+    }
+    /**
+     * Finds the Node within the LinkedList, at the given index.
+     * @param index the position of the Node in the list
+     * @return the Node at the current index or
+     * null if the index is < 0 or >= the size of the array
+     */
+    public Node get(int index){
+        Node temp = head;
+        if(index < 0 || index >= length){
+            return null;
+        }
+        for (int i = 0; i < index ; i++) {
+            temp = temp.next;
+        }
+
+        return temp;
+
+        /*
+        In the best case scenario, this loop will stop when it finds the index
+        while (temp != null) {
+            if (idx == index) {
+                return temp;
+            }
+            temp = temp.next;
+            idx++;
+        }
+        */
     }
 }
