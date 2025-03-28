@@ -246,5 +246,37 @@ public class LinkedList {
         length --;
         return temp;
     }
+
+    /**
+     * Reverses the LinkedList from back to front.
+     */
+    public void reverse(){
+        Node temp = head; // moving variable, stores the middle of the sliding windown
+        head = tail;
+        tail = temp;
+        Node after = temp.next; // moving variable stores the front of the window
+        Node before = null;  // moving variable, stores the back of the window
+
+        // we use a for loop because we know the length of our data set
+        for (int i = 0; i < length; i++) {
+            // set after to be the predecessor of temp
+            // aka set after to be the next after temp
+            // after is the node next to temp
+            after = temp.next;
+
+            // set temp.next to point at its ancestor
+            // aka set temp.next to point at whatever was behind it
+            // change the pointer of temp.next backwards, pointing at before
+            temp.next = before;
+
+            // set before to be whatever temp was
+            // before now has the value of whatever temp was.
+            before = temp;
+
+            // set temp to be whatever is after
+            // move the sliding window down, so temp now is whatever after is
+            temp = after;
+        }
+    }
 }
 
