@@ -278,5 +278,29 @@ public class LinkedList {
             temp = after;
         }
     }
+
+
+    /**
+     * Finds the middle node using Hare and Tortoise algorithm
+     * Two pointers traverse a list, one is a slow pointer and
+     * the other is faster ( 2 steps ahead).
+     * @return the middle node
+     */
+    public Node findMiddleNode(){
+        // Both pointers are set to the beginning of the list
+        Node slow = head;
+        Node fast = head;
+
+        // while the current node fast is pointing at is not null
+        // and fast.next is pointing at is not null
+        while(fast != null && fast.next != null ){
+
+            // increase slow by 1 node, so move next
+            // increase fast by 2 notes , so move next twice
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
 }
 
