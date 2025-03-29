@@ -27,6 +27,8 @@ public class DoublyLinkedList {
             System.out.println(temp.value);
             temp = temp.next;
         }
+        System.out.println();
+
     }
     public void getHead(){
         System.out.println("Head: " + head.value);
@@ -36,5 +38,24 @@ public class DoublyLinkedList {
     }
     public void getLength(){
         System.out.println("Length: " + length);
+    }
+
+    public void append(int value){
+        Node newNode  = new Node(value);
+        if(length == 0){
+            head = newNode;
+            tail = newNode;
+        }else {
+            /*
+            * if the list is not empty,
+            * set the next node of tail to be the new node,
+            * set the previous node of the newNode to be what tail is pointing at,
+            * move the tail pointer to the newNode*/
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+        length ++;
+
     }
 }

@@ -8,5 +8,14 @@ public class Test {
         dll.getLength();
         dll.printList();
 
+        dll.append(2);
+        dll.append(3);
+        dll.append(4);
+        dll.getHead();
+        dll.getTail();
+        dll.getLength();
+        dll.printList();
+
+
     }
 }
