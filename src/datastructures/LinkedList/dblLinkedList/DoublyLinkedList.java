@@ -22,6 +22,9 @@ public class DoublyLinkedList {
     }
 
     public void printList(){
+        if(length == 0){
+            System.out.println("Empty List");
+        }
         Node temp = head;
         while(temp != null){
             System.out.println(temp.value);
@@ -58,4 +61,74 @@ public class DoublyLinkedList {
         length ++;
 
     }
+
+    public Node removeLast(){
+        if(length == 0) return null;
+    /*
+    * to remove the last element, create a temp node and save tail,
+    * set tail to be tail.prev, this moves tail to its ancestor,
+    * cut the link by setting the predecessor tail to be null
+    * cut the link from the node being removed*/
+        Node temp = tail;
+        if(length == 1){
+            tail = null;
+            head = null;
+        }else {
+            tail = tail.prev;
+            tail.next = null;
+            temp.prev = null;
+        }
+    length --;
+    return temp;
+    }
+
+    public void prepend(int value) {
+        if(length == 0){
+            append(value);
+        }else{
+            Node newNode = new Node(value);
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
+            length++;
+
+        }
+    }
+
+    public Node removeFirst(){
+        Node temp = head;
+        if(length == 0) return null;
+        if(length == 1){
+            head = null;
+            tail = null;
+        }else {
+            head = head.next;
+            head.prev = null;
+            temp.next = null;
+
+        }
+
+    length--;
+    return temp;
+    }
+
+    Node temp = head;
+    public Node get(int index){
+        if(index < 0 || index >= length) return null;
+
+        Node temp = head;
+        if(index < length/2){
+            for(int i = 0; i < index; i++){
+                temp = temp.next;
+            }
+        }else{
+            temp = tail;
+            for(int i = length - 1 ; i > index; i--){
+                temp = temp.prev;
+            }
+        }
+
+        return temp;
+    }
+
 }
