@@ -61,7 +61,6 @@ public class DoublyLinkedList {
         length ++;
 
     }
-
     public Node removeLast(){
         if(length == 0) return null;
     /*
@@ -81,7 +80,6 @@ public class DoublyLinkedList {
     length --;
     return temp;
     }
-
     public void prepend(int value) {
         if(length == 0){
             append(value);
@@ -94,7 +92,6 @@ public class DoublyLinkedList {
 
         }
     }
-
     public Node removeFirst(){
         Node temp = head;
         if(length == 0) return null;
@@ -111,9 +108,12 @@ public class DoublyLinkedList {
     length--;
     return temp;
     }
-
-    Node temp = head;
     public Node get(int index){
+        /*
+        If the index is smaller, temp will start at head,
+        if its bigger, it will start and tail and the loop,
+        will run backwards
+         */
         if(index < 0 || index >= length) return null;
 
         Node temp = head;
@@ -130,5 +130,69 @@ public class DoublyLinkedList {
 
         return temp;
     }
+    public boolean set(int index, int value){
+        Node target = get(index);
 
+        if(target != null){
+            target.value = value;
+            return true;
+        }
+        return false;
+    }
+    public boolean insert(int index, int value){
+        if(index < 0 || index > length) return false;
+        if(index == 0) {
+            prepend(value);
+            return true;
+        }
+        if(index == length){
+            append(value);
+            return true;
+        }
+        Node newNode = new Node(value);
+        Node before = get(index -1 );
+        Node after = before.next;
+
+        newNode.next = after;
+        newNode.prev = before;
+        before.next = newNode;
+        after.prev = newNode;
+        length++;
+
+
+        return true;
+    }
+    public Node remove(int index){
+        if(index < 0 || index > length) return null;
+        if(index == 0) removeFirst();
+        if(index == length -1) removeLast();
+
+        Node temp = get(index);
+
+        temp.next.prev = temp.prev;
+        temp.prev.next = temp.next;
+        temp.next = null;
+        temp.prev = null;
+        length --;
+        return temp;
+
+    }
+
+    public void reverse(){
+        if(length <= 1) return;
+        Node temp = head;
+        head = tail;
+        tail = temp;
+        Node before = null;
+        Node after = temp.next;
+
+        while(temp !=null){
+            after = temp.next;
+            temp.next = before;
+            before = temp;
+            temp.prev = after;
+            temp = after;
+        }
+    }
 }
+
