@@ -10,7 +10,5 @@ public class Test {
         dll.append(4);
         dll.append(5);
         dll.printList();
-        dll.swapPairs();
-
     }
 }

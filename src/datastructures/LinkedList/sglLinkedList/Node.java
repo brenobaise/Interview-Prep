@@ -1,4 +1,4 @@
-package datastructures.LinkedList;
+package datastructures.LinkedList.sglLinkedList;
 
 public class Node {
     public int value;

@@ -1,4 +1,4 @@
-package datastructures.LinkedList;
+package datastructures.LinkedList.sglLinkedList;
 
 public class Main {
     public static void main(String[] args) {
