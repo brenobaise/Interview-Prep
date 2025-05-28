@@ -2,14 +2,16 @@ package datastructures.LinkedList.stack;
 
 public class Main {
     public static void main(String[] args) {
-        Stack stack  = new Stack(4);
+        Stack myStack = new Stack(2);
 
-        stack.getTop();
-        stack.getHeight();
+        myStack.push(1);
+        myStack.push(1);
+        myStack.printStack();
 
-        stack.printStack();
-        stack.push(5);
-        stack.printStack();
+        System.out.println("--");
+        myStack.pop();
+        myStack.printStack();
+
     }
 
 

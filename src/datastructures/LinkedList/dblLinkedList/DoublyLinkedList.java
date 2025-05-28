@@ -178,21 +178,38 @@ public class DoublyLinkedList {
 
     }
 
+//    public void reverse(){
+//        if(length <= 1) return;
+//        Node temp = head;
+//        head = tail;
+//        tail = temp;
+//        Node before = null;
+//        Node after = temp.next;
+//
+//        while(temp !=null){
+//            after = temp.next;
+//            temp.next = before;
+//            before = temp;
+//            temp.prev = after;
+//            temp = after;
+//        }
+//    }
+
     public void reverse(){
-        if(length <= 1) return;
         Node temp = head;
         head = tail;
         tail = temp;
-        Node before = null;
-        Node after = temp.next;
 
-        while(temp !=null){
+        Node after = temp.next;
+        Node before = null;
+        for (int i = 0; i < length; i++) {
             after = temp.next;
             temp.next = before;
             before = temp;
-            temp.prev = after;
             temp = after;
+
         }
+
     }
 }
 
