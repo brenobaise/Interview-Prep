@@ -1,5 +1,7 @@
 package HashTables;
 
+import java.util.ArrayList;
+
 public class HashTable {
     private int size = 7;
     private Node[] dataMap;
@@ -69,4 +71,23 @@ public class HashTable {
             }
         }
     }
+
+    public ArrayList keys(){
+        ArrayList<String> allKeys = new ArrayList<>();
+        // loop through all Node[] indexes
+        for (int i = 0; i < dataMap.length ; i++) {
+        // create a temp pointer for a specific Node[] index
+            Node temp = dataMap[i];
+            while(temp != null){
+
+        // within that index, add all node's keys to the array list
+                allKeys.add(temp.key);
+                temp = temp.next;
+
+            }
+        }
+        return allKeys;
+    }
+
+
 }
