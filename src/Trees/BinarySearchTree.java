@@ -1,4 +1,4 @@
-package datastructures.LinkedList.Trees;
+package Trees;
 
 public class BinarySearchTree {
      Node root;

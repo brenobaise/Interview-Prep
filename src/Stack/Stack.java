@@ -1,4 +1,4 @@
-package datastructures.LinkedList.stack;
+package Stack;
 
 public class Stack {
     private Node top;

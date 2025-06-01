@@ -1,6 +1,4 @@
-package datastructures.LinkedList.Queues;
-
-import datastructures.LinkedList.stack.Stack;
+package Queues;
 
 public class Queue {
     class Node{

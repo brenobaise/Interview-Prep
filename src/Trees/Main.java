@@ -1,4 +1,4 @@
-package datastructures.LinkedList.Trees;
+package Trees;
 
 public class Main {
     public static void main(String[] args) {
