@@ -28,6 +28,26 @@ public class HashTable {
         return hash;
     }
 
+    public void set(String key, int value){
+        // find an index for this incoming key,pair
+        int index = hash(key);
+
+        // create the new node
+        Node newNode = new Node(key, value);
+
+        // if the Node[] is empty then add this new node
+        if(dataMap[index] == null){
+             dataMap[index] = newNode;
+         }else {
+        // when the Node[] at the given index is not empty,
+        // then loop through all the nodes until there isnt any and add the node there.
+             Node temp = dataMap[index];
+             while(temp.next != null){
+                 temp = temp.next;
+             }
+             temp.next = newNode;
+         }
+    }
 
     public void printTable(){
         for(int i = 0; i < dataMap.length; i++){
