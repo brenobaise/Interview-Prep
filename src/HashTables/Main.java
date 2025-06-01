@@ -2,14 +2,11 @@ package HashTables;
 
 public class Main {
     public static void main(String[] args) {
-        HashTable ht = new HashTable();
-        ht.set("nails", 100);
-        ht.set("tile", 50);
-        ht.set("lumber", 80);
-        ht.printTable();
+        int[] array1 = {1,2,3};
+        int[] array2 = {2,4,5};
+        ItemInCommonQuestion hm = new ItemInCommonQuestion(array1, array2);
 
-        System.out.println(ht.get("lumber"));
-        System.out.println(ht.get("bolts"));
+        System.out.println(hm.itemInCommon());
     }
 
 
